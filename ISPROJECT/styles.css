@@ -1,0 +1,23 @@
+/* styles.css */
+.common {
+    padding: 10px;
+  }
+  
+  .header {
+    background-color: #eee;
+    text-align: center;
+  }
+  
+  .menu {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  .footer {
+    background-color: #ddd;
+    text-align: center;
+    padding: 10px;
+    margin-top: 40px;
+  }
+
+  
