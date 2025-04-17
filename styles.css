@@ -1,0 +1,26 @@
+body {
+    background-image: url('https://cdn.nba.com/teams/uploads/sites/1610612744/2022/12/stephen-curry-wallpaper.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .section {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+  }
+  
+  h1, h2 {
+    color: gold;
+  }
+  
+  a {
+    color: #00ffcc;
+    text-decoration: underline;
+  }
+  
+
+  

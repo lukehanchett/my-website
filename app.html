@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Steph Curry Trivia Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f4f4f4;
+    }
+    img {
+      width: 150px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    #question {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .option {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      width: 60%;
+      border: 1px solid #333;
+      cursor: pointer;
+      background-color: white;
+    }
+    .correct {
+      background-color: #c8e6c9;
+    }
+    .wrong {
+      background-color: #ffcdd2;
+    }
+    #feedback {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    #score {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <img src="images/steph.jpg" alt="Steph Curry">
+  <h1>Steph Curry Trivia</h1>
+  <div id="question"></div>
+  <div id="options"></div>
+  <p id="feedback"></p>
+  <button onclick="loadQuestion()">Next Question</button>
+  <div id="score"></div>
+
+  <script>
+    const questions = [
+      {
+        q: 'What college did Steph Curry attend?',
+        options: ['Duke', 'UNC', 'Davidson', 'Kentucky'],
+        answer: 'Davidson'
+      },
+      {
+        q: 'How many NBA Championships has Steph Curry won?',
+        options: ['2', '3', '4', '5'],
+        answer: '4'
+      },
+      {
+        q: 'Which team drafted Steph Curry?',
+        options: ['Golden State Warriors', 'Charlotte Hornets', 'New York Knicks', 'LA Lakers'],
+        answer: 'Golden State Warriors'
+      },
+      {
+        q: 'What jersey number does Steph wear?',
+        options: ['30', '3', '23', '11'],
+        answer: '30'
+      },
+      {
+        q: 'How many MVP awards has Steph Curry won?',
+        options: ['1', '2', '3', '4'],
+        answer: '2'
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+
+    function loadQuestion() {
+      const q = questions[current];
+      document.getElementById('question').innerText = q.q;
+      const optsDiv = document.getElementById('options');
+      const feedback = document.getElementById('feedback');
+      feedback.textContent = '';
+      optsDiv.innerHTML = '';
+      q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.innerText = opt;
+        btn.className = 'option';
+        btn.onclick = () => {
+          document.querySelectorAll('.option').forEach(b => b.disabled = true);
+          if (opt === q.answer) {
+            btn.classList.add('correct');
+            feedback.textContent = "Correct! 🎯";
+            score++;
+          } else {
+            btn.classList.add('wrong');
+            feedback.textContent = `Oops! The correct answer was ${q.answer}.`;
+          }
+          document.getElementById('score').textContent = `Score: ${score} / ${questions.length}`;
+        };
+        optsDiv.appendChild(btn);
+      });
+      current = (current + 1) % questions.length;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>
